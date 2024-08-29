@@ -17,6 +17,7 @@ function App() {
   const API_KEY = import.meta.env.VITE_APP_KEY;
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentInput, setCurrentInput] = useState("");
   const [from, setFrom] = useState(0);
   const [to, setTo] = useState(20);
 
@@ -44,7 +45,14 @@ function App() {
           }
         );
         if (result.data && result.data.hits) {
-          setRecipes(result.data.hits.map((hit) => hit.recipe));
+          if (from === 0) {
+            setRecipes(result.data.hits.map((hit) => hit.recipe));
+          } else {
+            setRecipes((prevRecipes) => [
+              ...prevRecipes,
+              ...result.data.hits.map((hit) => hit.recipe),
+            ]);
+          }
         }
       } catch (error) {
         console.error("Error fetching recipes:", error);
@@ -53,10 +61,18 @@ function App() {
     }
 
     fetchRecipes();
-  }, [searchQuery, from, to]);
+  }, [searchQuery, from, to, API_ID, API_KEY]);
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentInput(event.target.value);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setSearchQuery(currentInput);
+      setFrom(0);
+      setTo(20);
+    }
   };
 
   return (
@@ -64,8 +80,9 @@ function App() {
       <PageTitle>Recipes</PageTitle>
       <SearchInput
         type="text"
-        value={searchQuery}
+        value={currentInput}
         onChange={handleSearchChange}
+        onKeyPress={handleKeyPress}
         placeholder="Search for a food! ex) salad, coke ..."
       />
 
