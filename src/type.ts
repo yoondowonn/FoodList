@@ -1,12 +1,14 @@
+export interface Ingredient {
+  text: string;
+  weight: number;
+}
+
 export interface Recipe {
-  label?: string;
-  image?: string;
-  calories?: string;
-  carbs?: string;
-  fat?: string;
-  protein?: string;
-  sodium?: string;
-  sugar?: string;
+  label: string;
+  image: string;
+  calories: number;
+  ingredients: Ingredient[];
+  source: string;
 }
 
 export interface Hit {
@@ -15,13 +17,4 @@ export interface Hit {
 
 export interface ApiResponse {
   hits: Hit[];
-}
-
-export interface Food {
-  name: string;
-  calories: number;
-}
-
-export interface ApiResponse {
-  results: Food[];
 }

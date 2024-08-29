@@ -1,61 +1,93 @@
 import { useState, useEffect } from "react";
-import { fetchRecipes } from "./api";
-import { Recipe } from "./type";
+import axios from "axios";
 import {
   PageTitle,
   SearchInput,
-  ResultsContainer,
-  ResultCard,
-  FoodImage,
-  FoodDetails,
-  FoodName,
+  GridContainer,
+  RecipeCard,
+  RecipeImage,
+  RecipeInfo,
+  RecipeName,
   NutritionInfo,
-} from "./StyledList";
+} from "StyledList";
+import { ApiResponse, Recipe } from "./type";
 
 function App() {
+  const API_ID = import.meta.env.VITE_APP_ID;
+  const API_KEY = import.meta.env.VITE_APP_KEY;
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [from, setFrom] = useState(0);
+  const [to, setTo] = useState(20);
+
+  const loadMoreRecipes = () => {
+    setFrom(to);
+    setTo(to + 20);
+  };
 
   useEffect(() => {
-    if (searchQuery.length > 0) {
-      fetchRecipes(searchQuery)
-        .then((data) => {
-          setRecipes(data.hits.map((hit) => hit.recipe));
-        })
-        .catch(console.error);
+    async function fetchRecipes() {
+      if (!searchQuery) return;
+      try {
+        const result = await axios.get<ApiResponse>(
+          "https://api.edamam.com/api/recipes/v2",
+          {
+            params: {
+              type: "public",
+              q: searchQuery,
+              app_id: API_ID,
+              app_key: API_KEY,
+              imageSize: "REGULAR",
+              from,
+              to,
+            },
+          }
+        );
+        if (result.data && result.data.hits) {
+          setRecipes(result.data.hits.map((hit) => hit.recipe));
+        }
+      } catch (error) {
+        console.error("Error fetching recipes:", error);
+        setRecipes([]);
+      }
     }
-  }, [searchQuery]);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    fetchRecipes();
+  }, [searchQuery, from, to]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
   return (
-    <div>
-      <PageTitle>FOODIST</PageTitle>
+    <>
+      <PageTitle>Recipes</PageTitle>
       <SearchInput
         type="text"
         value={searchQuery}
         onChange={handleSearchChange}
-        placeholder="Search for a food..."
+        placeholder="Search for a food! ex) salad, coke ..."
       />
-      <ResultsContainer>
+
+      <GridContainer>
         {recipes.map((recipe, index) => (
-          <ResultCard key={index}>
-            <FoodImage src={recipe.image} alt={recipe.label} />
-            <FoodDetails>
-              <FoodName>{recipe.label}</FoodName>
-              <NutritionInfo>Calories: {recipe.calories}kcal</NutritionInfo>
-              <NutritionInfo>Carbs: {recipe.carbs}g</NutritionInfo>
-              <NutritionInfo>Fat: {recipe.fat}g</NutritionInfo>
-              <NutritionInfo>Protein: {recipe.protein}g</NutritionInfo>
-              <NutritionInfo>Sodium: {recipe.sodium}mg</NutritionInfo>
-              <NutritionInfo>Sugar: {recipe.sugar}g</NutritionInfo>
-            </FoodDetails>
-          </ResultCard>
+          <RecipeCard key={index}>
+            <RecipeImage src={recipe.image} alt={recipe.label} />
+            <RecipeInfo>
+              <RecipeName>{recipe.label}</RecipeName>
+              <NutritionInfo>
+                Calories: {recipe.calories.toFixed(0)} kcal
+              </NutritionInfo>
+              <NutritionInfo>
+                Ingredients: {recipe.ingredients.length}
+              </NutritionInfo>
+              <NutritionInfo>Source: {recipe.source}</NutritionInfo>
+            </RecipeInfo>
+          </RecipeCard>
         ))}
-      </ResultsContainer>
-    </div>
+      </GridContainer>
+      <button onClick={loadMoreRecipes}>Load More Recipes</button>
+    </>
   );
 }
 

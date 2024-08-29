@@ -1,19 +1,14 @@
 import styled from "styled-components";
 
-export const FoodCard = styled.div`
-  width: 100%;
-  height: 800px;
-  background-color: blue;
-`;
-
-export const ListContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: pink;
-`;
-
 export const PageTitle = styled.h1`
   text-align: center;
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 50px;
 `;
 
 export const SearchInput = styled.input`
@@ -30,29 +25,32 @@ export const ResultsContainer = styled.div`
   text-align: center;
 `;
 
-export const ResultCard = styled.div`
+export const RecipeCard = styled.div`
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
-export const FoodImage = styled.img`
-  width: 100px;
-  height: auto;
+export const RecipeImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 `;
 
-export const FoodDetails = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 20px;
-  text-align: left;
+export const RecipeInfo = styled.div`
+  padding: 10px;
+  text-align: center;
 `;
 
-export const FoodName = styled.h2`
-  margin-top: 0;
+export const RecipeName = styled.h3`
+  margin: 10px 0;
+  color: #333;
 `;
 
 export const NutritionInfo = styled.p`
   margin: 5px 0;
+  color: #666;
+  font-size: 0.8rem;
 `;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ApiResponse } from "./type";
 
-const API_URL = "/api/recipes/v2";
+const API_URL = "https://api.edamam.com/api/recipes/v2";
 
 export const fetchRecipes = async (query: string): Promise<ApiResponse> => {
   const params = {
