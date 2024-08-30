@@ -1,5 +1,11 @@
-import { ChangeEvent, KeyboardEvent } from "react";
-import { InputWrap, Input } from "./StyledInput";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import {
+  InputWrap,
+  Input,
+  ClearButton,
+  InputContainer,
+  SearchButton,
+} from "./StyledInput";
 
 interface SearchInputProps {
   currentInput: string;
@@ -7,20 +13,38 @@ interface SearchInputProps {
   handleKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput = ({
+const SearchInput: React.FC<SearchInputProps> = ({
   currentInput,
   handleSearchChange,
   handleKeyDown,
-}: SearchInputProps) => {
+}) => {
+  const [inputValue, setInputValue] = useState(currentInput);
+
+  const handleClear = () => {
+    setInputValue("");
+    handleSearchChange({
+      target: { value: "" },
+    } as ChangeEvent<HTMLInputElement>);
+  };
+
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+    handleSearchChange(event);
+  };
+
   return (
     <InputWrap>
-      <Input
-        type="text"
-        value={currentInput}
-        onChange={handleSearchChange}
-        onKeyDown={handleKeyDown}
-        placeholder="Search for a food! ex) salad, coke ..."
-      />
+      <InputContainer>
+        <SearchButton aria-hidden="true" />
+        <Input
+          type="text"
+          value={inputValue}
+          onChange={onInputChange}
+          onKeyDown={handleKeyDown}
+          placeholder="Search for a food! "
+        />
+        {inputValue && <ClearButton onClick={handleClear} />}
+      </InputContainer>
     </InputWrap>
   );
 };

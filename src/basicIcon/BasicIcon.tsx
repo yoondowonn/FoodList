@@ -1,5 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 import IconMenu from "../assets/images/icon-menu-24px.svg";
+import IconUser from "../assets/images/icon-user-24px.svg";
+import IconHome from "../assets/images/icon-home-24px.svg";
 
 type IconSize =
   | "extraLarge"
@@ -39,6 +41,8 @@ export default function BasicIcon({
 
 const icons: Record<string, string> = {
   menu: IconMenu,
+  user: IconUser,
+  home: IconHome,
 };
 
 const sizeStyles: Record<IconSize, ReturnType<typeof css>> = {
@@ -85,12 +89,31 @@ const StyledIcon = styled.span<{
 }>`
   display: inline-block;
   vertical-align: middle;
-  background: url(${(props) => icons[props.$icon]}) center center no-repeat;
-  background-size: cover;
   ${({ $size }) => sizeStyles[$size]};
-  margin-right: ${(props) => props.$marginRight}px;
-  margin-left: ${(props) => props.$marginLeft}px;
-  color: ${(props) => props.$color || "inherit"}; color
-  background-image: ${(props) =>
-    icons[props.$icon] ? `url(${icons[props.$icon]})` : "none"};
+  margin-right: ${(props) => `${props.$marginRight}px`};
+  margin-left: ${(props) => `${props.$marginLeft}px`};
+  ${({
+    $icon,
+    $color,
+    theme,
+  }: {
+    $icon: string;
+    $color?: string;
+    theme: DefaultTheme;
+  }) => {
+    const themedIcon = (theme.icons && theme.icons[$icon]) || icons[$icon];
+    return $color
+      ? css`
+          background-color: ${$color};
+          mask: url(${themedIcon});
+          -webkit-mask: url(${themedIcon});
+          mask-repeat: no-repeat;
+          mask-position: center center;
+          mask-size: cover;
+        `
+      : css`
+          background: url(${themedIcon}) center center no-repeat;
+          background-size: cover;
+        `;
+  }}
 `;

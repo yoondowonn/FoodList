@@ -40,13 +40,6 @@ export const zIndex = {
   fixedFooter: "100",
 };
 
-export const border = {
-  cardRadiusLg: "16px",
-  cardRadiusMd: "8px",
-  cardRadiusSm: "4px",
-  circleRadiusLg: "16px",
-};
-
 export const fontWeight = {
   fontWeightMedium: "500",
 };

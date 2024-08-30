@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import { useBrandStore } from "./store/brandStore";
+import { MenuProvider } from "./fullMenu/MenuContext";
+import { useBrandStore } from "./store/BrandStore";
 import { themeDark, themeLight } from "./assets/theme/theme";
 import { useParams } from "react-router-dom";
 import { ServiceType } from "./type/ServiceType";
@@ -9,6 +10,7 @@ import Header from "header/Header";
 import RecipesContainer from "./recipes/RecipesContainer";
 import Layout from "Layout/Layout";
 import SearchInput from "input/SearchInput";
+import FullMenu from "fullMenu/FullMenu";
 
 const App = () => {
   const { brand } = useParams<{ brand?: ServiceType }>();
@@ -35,21 +37,21 @@ const App = () => {
   };
 
   return (
-    <>
-      <ThemeProvider theme={type === ServiceType.Dark ? themeDark : themeLight}>
+    <ThemeProvider theme={type === ServiceType.Dark ? themeDark : themeLight}>
+      <MenuProvider>
         <Layout>
           <GlobalStyle />
           <Header title="Recipes" />
+          <FullMenu />
           <SearchInput
             currentInput={currentInput}
             handleSearchChange={handleSearchChange}
             handleKeyDown={handleKeyDown}
           />
           <RecipesContainer searchQuery={searchQuery} />
-          <div style={{ height: "1000px" }}></div>
         </Layout>
-      </ThemeProvider>
-    </>
+      </MenuProvider>
+    </ThemeProvider>
   );
 };
 

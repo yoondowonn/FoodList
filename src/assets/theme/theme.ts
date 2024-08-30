@@ -1,11 +1,14 @@
 import { DefaultTheme } from "styled-components";
-import { height, width, zIndex, border } from "./commonTheme";
+import { height, width, zIndex } from "./commonTheme";
 import { colorLight } from "./LightTheme";
 import { colorDark } from "./DarkTheme";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    color: typeof colorLight;
+    height: typeof height;
+    width: typeof width;
+    zIndex: typeof zIndex;
+    color: typeof colorLight | typeof colorDark;
   }
 }
 
@@ -14,7 +17,6 @@ export const themeLight: DefaultTheme = {
   width,
   zIndex,
   color: colorLight,
-  border,
 };
 
 export const themeDark: DefaultTheme = {
@@ -22,7 +24,6 @@ export const themeDark: DefaultTheme = {
   width,
   zIndex,
   color: colorDark,
-  border,
 };
 
 const theme: DefaultTheme = {

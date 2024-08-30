@@ -70,3 +70,15 @@ export const MoreButton = styled.button`
 
   margin-top: 20px;
 `;
+
+export const NoticeBox = styled.div`
+  font-size: 18px;
+  width: 90%;
+  padding: 30px;
+  color: #1f2023;
+  background-color: ${({ theme }) => theme.color.buttonTertiary};
+  border-radius: 10px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 10px 0 #92949945;
+`;

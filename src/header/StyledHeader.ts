@@ -22,6 +22,7 @@ export const PageTitle = styled.h1`
   font-weight: bold;
   text-align: center;
   margin-left: 24px;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const MenuButton = styled.button`

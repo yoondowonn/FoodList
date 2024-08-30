@@ -10,6 +10,7 @@ import {
   MoreButton,
   ButtonWrap,
   ListWrap,
+  NoticeBox,
 } from "./StyledList";
 import { ApiResponse, Recipe } from "./type";
 
@@ -85,6 +86,14 @@ const RecipesContainer = ({ searchQuery }: RecipesContainerProps) => {
           </RecipeCard>
         ))}
       </GridContainer>
+
+      {recipes.length <= 0 && (
+        <NoticeBox>
+          Search for food. <br />
+          ex) coke, salad, pasta ...
+        </NoticeBox>
+      )}
+
       {recipes.length > 0 && (
         <ButtonWrap>
           <MoreButton type="button" onClick={loadMoreRecipes}>
