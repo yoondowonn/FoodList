@@ -24,11 +24,6 @@ export const colorDark = {
   secondary5: "#F8FAF4",
   secondary20: "#DDE7C4",
   secondary80: "#5D7D2B",
-  valid: "#3366FF",
-  eVGreen: "#72BFA8",
-  error: "#EA0029",
-  onCard: "#8BC34A",
-  white: "#ffffff",
 
   // Text
   textSecondary: "#8BC34A",
@@ -63,43 +58,4 @@ export const colorDark = {
   buttonPrimaryUltimate: "#303C47",
   buttonOnPrimaryUltimate: "#FFFFFF",
   buttonOnPrimaryDisabled: "#828A90",
-
-  // Badge
-  badgePrimary: "#8BC34A",
-  public: "#8BC34A",
-  rejected: "#636B74",
-  complete: "#8BC34A",
-  connectorAvailable: "#3366FF",
-  connectorOnHold: "#F3C300",
-  connectorOutOfService: "#49555F",
-  badgeThumbsDown: "#E7E9EC",
-  badgeThumbsUp: "#8BC34A",
-  inactive: "#303C47",
-  onInactive: "#49555F",
-
-  // Thumbs
-  thumbsUp: "#8BC34A",
-  bgThumbsDown: "#49555F",
-  bgThumbsUp: "#49555F",
-
-  // Point
-  point: "#8BC34A",
-
-  // Progress
-  lineProgress: "#82A23D",
-  bgProgress: "#DDE7C4",
-  progressStart: "#5D7D2B",
-  progressGradient: "#82A23D",
-  lineProgressBasic: "rgba(5, 20, 31, 0.1)",
-  onProgress: "#05141F",
-  progressBg: "#EDF0F2",
-
-  // Popup
-  toast: "#E7E9EC",
-  onToast: "#05141F",
-  toastPoint: "#5D7D2B",
-
-  // Blur
-  blur: "rgba(23, 36, 48, 0)",
-  imgBlur: "rgba(23, 36, 48, 0.8)",
 };

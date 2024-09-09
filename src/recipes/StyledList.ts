@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ListWrap = styled.div`
+  flex: 1;
+  background: ${(props) => props.theme.color.bgSurface};
   position: relative;
   margin-top: 80px;
   padding: 50px;
@@ -20,7 +22,7 @@ export const ResultsContainer = styled.div`
 `;
 
 export const RecipeCard = styled.div`
-  background: #fff;
+  background: ${(props) => props.theme.color.bgSurface};
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -40,12 +42,12 @@ export const RecipeInfo = styled.div`
 
 export const RecipeName = styled.h3`
   margin: 10px 0;
-  color: #333;
+  color: ${({ theme }) => theme.color.grey100};
 `;
 
 export const NutritionInfo = styled.p`
   margin: 5px 0;
-  color: #666;
+  color: ${({ theme }) => theme.color.grey60};
   font-size: 0.8rem;
 `;
 
@@ -60,8 +62,8 @@ export const MoreButton = styled.button`
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #f4f4f6;
-  color: #1f2023;
+  background-color: ${({ theme }) => theme.color.grey20};
+  color: ${({ theme }) => theme.color.grey100};
 
   &:hover {
     background-color: #49555f;
@@ -75,7 +77,7 @@ export const NoticeBox = styled.div`
   font-size: 18px;
   width: 90%;
   padding: 30px;
-  color: #1f2023;
+  color: ${({ theme }) => theme.color.grey100};
   background-color: ${({ theme }) => theme.color.buttonTertiary};
   border-radius: 10px;
   margin: 0 auto;

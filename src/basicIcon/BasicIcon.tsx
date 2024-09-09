@@ -2,6 +2,8 @@ import styled, { css, DefaultTheme } from "styled-components";
 import IconMenu from "../assets/images/icon-menu-24px.svg";
 import IconUser from "../assets/images/icon-user-24px.svg";
 import IconHome from "../assets/images/icon-home-24px.svg";
+import IconStar from "../assets/images/icon-star.svg";
+import IconLight from "../assets/images/icon-light.svg";
 
 type IconSize =
   | "extraLarge"
@@ -43,6 +45,8 @@ const icons: Record<string, string> = {
   menu: IconMenu,
   user: IconUser,
   home: IconHome,
+  star: IconStar,
+  light: IconLight,
 };
 
 const sizeStyles: Record<IconSize, ReturnType<typeof css>> = {

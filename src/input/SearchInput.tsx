@@ -41,7 +41,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           value={inputValue}
           onChange={onInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Search for a food! "
+          placeholder="Search for a food!"
         />
         {inputValue && <ClearButton onClick={handleClear} />}
       </InputContainer>

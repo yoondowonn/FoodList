@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { MenuProvider } from "./fullMenu/MenuContext";
-import { useBrandStore } from "./store/BrandStore";
+import { useModeStore } from "./store/ModeStore";
 import { themeDark, themeLight } from "./assets/theme/theme";
 import { useParams } from "react-router-dom";
 import { ServiceType } from "./type/ServiceType";
 import GlobalStyle from "./assets/globalStyle";
 import Header from "header/Header";
 import RecipesContainer from "./recipes/RecipesContainer";
-import Layout from "Layout/Layout";
+import Layout from "layout/Layout";
 import SearchInput from "input/SearchInput";
 import FullMenu from "fullMenu/FullMenu";
 
 const App = () => {
-  const { brand } = useParams<{ brand?: ServiceType }>();
-  const type = useBrandStore((state: any) => state.type as ServiceType);
-  const setBrandType = useBrandStore((state: any) => state.setBrandType);
+  const { mode } = useParams<{ mode?: ServiceType }>();
+  const type = useModeStore((state: any) => state.type as ServiceType);
+  const setModeType = useModeStore((state: any) => state.setModeType);
 
   useEffect(() => {
-    if (brand) {
-      setBrandType(brand);
+    if (mode) {
+      setModeType(mode);
     }
-  }, [brand, setBrandType]);
+  }, [mode, setModeType]);
 
   const [currentInput, setCurrentInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -48,6 +48,7 @@ const App = () => {
             handleSearchChange={handleSearchChange}
             handleKeyDown={handleKeyDown}
           />
+
           <RecipesContainer searchQuery={searchQuery} />
         </Layout>
       </MenuProvider>

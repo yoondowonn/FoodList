@@ -9,4 +9,5 @@ export const LayoutContentsWrap = styled.div`
   box-sizing: border-box;
   min-height: calc(var(--vh, 1vh) * 100);
   min-width: 350px;
+  overflow-y: auto;
 `;

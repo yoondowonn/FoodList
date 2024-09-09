@@ -2,19 +2,19 @@ import { create } from "zustand";
 import { ServiceType } from "type/ServiceType";
 import { persist } from "zustand/middleware";
 
-export interface BrandStore {
+export interface ModeStore {
   type: ServiceType;
-  setBrandType: (brand: ServiceType) => void;
+  setModeType: (mode: ServiceType) => void;
 }
 
-export const useBrandStore = create(
+export const useModeStore = create(
   persist(
     (set) => ({
       type: ServiceType.None,
-      setBrandType: (brand: ServiceType) => set({ type: brand }),
+      setModeType: (mode: ServiceType) => set({ type: mode }),
     }),
     {
-      name: "brand-storage",
+      name: "mode-storage",
       getStorage: () => localStorage,
     }
   )

@@ -5,10 +5,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-
   html, body {
     font-size: 16px;
-   
     font-family: '-apple-system', 'BlinkMacSystemFont', system-ui, 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     -webkit-text-size-adjust: none;

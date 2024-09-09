@@ -6,7 +6,7 @@ export const InputWrap = styled.div`
   position: sticky;
   top: 90px;
   width: 100%;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.bgSurface};
   overflow: hidden;
   z-index: 999;
   padding: 20px;
@@ -27,6 +27,7 @@ export const Input = styled.input`
   margin: 0 auto;
   border: 1px solid ${({ theme }) => theme.color.grey20};
   border-radius: 6px;
+  color: ${({ theme }) => theme.color.grey100};
   box-shadow: 0 4px 10px 0 #92949945;
 
   &:focus {
@@ -67,6 +68,10 @@ export const SearchButton = styled.span`
   left: 10px;
   width: 20px;
   height: 20px;
-  background: url(${searchIcon}) no-repeat center;
-  background-size: contain;
+  background-color: ${({ theme }) => theme.color.grey100};
+  mask: url(${searchIcon});
+  -webkit-mask: url(${searchIcon});
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: cover;
 `;
