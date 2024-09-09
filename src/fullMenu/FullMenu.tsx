@@ -33,7 +33,7 @@ const FullMenu: React.FC = () => {
             <BasicHr />
 
             <ManagementMenu>
-              <a href="#chargingHistory">
+              <a href="/recipes">
                 <MenuItem onClick={() => {}}>
                   <BasicIcon
                     icon="home"
@@ -44,7 +44,7 @@ const FullMenu: React.FC = () => {
                   <span>Recipes</span>
                 </MenuItem>
               </a>
-              <a href="#chargingSubscription">
+              <a href="/user">
                 <MenuItem onClick={() => {}}>
                   <BasicIcon
                     icon="user"

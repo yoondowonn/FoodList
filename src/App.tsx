@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { MenuProvider } from "./fullMenu/MenuContext";
 import { useModeStore } from "./store/ModeStore";
@@ -7,10 +8,9 @@ import { useParams } from "react-router-dom";
 import { ServiceType } from "./type/ServiceType";
 import GlobalStyle from "./assets/globalStyle";
 import Header from "header/Header";
-import RecipesContainer from "./recipes/RecipesContainer";
 import Layout from "layout/Layout";
-import SearchInput from "input/SearchInput";
 import FullMenu from "fullMenu/FullMenu";
+import SearchContainer from "searchContainer/searchContainer";
 
 const App = () => {
   const { mode } = useParams<{ mode?: ServiceType }>();
@@ -23,36 +23,23 @@ const App = () => {
     }
   }, [mode, setModeType]);
 
-  const [currentInput, setCurrentInput] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentInput(event.target.value);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      setSearchQuery(currentInput);
-    }
-  };
-
   return (
-    <ThemeProvider theme={type === ServiceType.Dark ? themeDark : themeLight}>
-      <MenuProvider>
-        <Layout>
-          <GlobalStyle />
-          <Header title="Recipes" />
-          <FullMenu />
-          <SearchInput
-            currentInput={currentInput}
-            handleSearchChange={handleSearchChange}
-            handleKeyDown={handleKeyDown}
-          />
-
-          <RecipesContainer searchQuery={searchQuery} />
-        </Layout>
-      </MenuProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={type === ServiceType.Dark ? themeDark : themeLight}>
+        <MenuProvider>
+          <Layout>
+            <GlobalStyle />
+            <Header title="Recipes" />
+            <FullMenu />
+            <Routes>
+              <Route path="/" element={<Navigate replace to="/recipes" />} />
+              <Route path="/recipes" element={<SearchContainer />} />
+              <Route path="/user" element={<SearchContainer />} />
+            </Routes>
+          </Layout>
+        </MenuProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 
