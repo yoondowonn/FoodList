@@ -26,7 +26,7 @@ const UserContainer: React.FC = () => {
         <InfoSlide>
           <InfoTitle>Info</InfoTitle>
           <ImgWrap>
-            <img src={"src/assets/images/yoon.jpg"} alt="info" />
+            <img src={"public/yoon.jpg"} alt="info" />
           </ImgWrap>
           <KeyValue keyLabel="Username" value="YOON DO WON" textAlign="right" />
           <KeyValue
