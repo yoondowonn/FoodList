@@ -89,7 +89,7 @@ const RecipesContainer = ({ searchQuery }: RecipesContainerProps) => {
 
       {recipes.length <= 0 && (
         <NoticeBox>
-          Search for food. <br />
+          Search for a food. <br />
           ex) coke, salad, pasta ...
         </NoticeBox>
       )}

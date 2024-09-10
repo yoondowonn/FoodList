@@ -10,4 +10,5 @@ export const LayoutContentsWrap = styled.div`
   min-height: calc(var(--vh, 1vh) * 100);
   min-width: 350px;
   overflow-y: auto;
+  background-color: ${({ theme }) => theme.color.buttonOnPrimary};
 `;

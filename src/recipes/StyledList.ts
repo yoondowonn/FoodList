@@ -4,7 +4,7 @@ export const ListWrap = styled.div`
   flex: 1;
   background: ${(props) => props.theme.color.bgSurface};
   position: relative;
-  margin-top: 80px;
+  margin-top: 90px;
   padding: 50px;
 `;
 
@@ -75,6 +75,7 @@ export const MoreButton = styled.button`
 
 export const NoticeBox = styled.div`
   font-size: 18px;
+  font-weight: bold;
   width: 90%;
   padding: 30px;
   color: ${({ theme }) => theme.color.grey100};

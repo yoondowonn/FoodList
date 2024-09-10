@@ -11,6 +11,7 @@ import Header from "header/Header";
 import Layout from "layout/Layout";
 import FullMenu from "fullMenu/FullMenu";
 import SearchContainer from "searchContainer/searchContainer";
+import UserContainer from "userContainer/UserContainer";
 
 const App = () => {
   const { mode } = useParams<{ mode?: ServiceType }>();
@@ -34,7 +35,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Navigate replace to="/recipes" />} />
               <Route path="/recipes" element={<SearchContainer />} />
-              <Route path="/user" element={<SearchContainer />} />
+              <Route path="/user" element={<UserContainer />} />
             </Routes>
           </Layout>
         </MenuProvider>
