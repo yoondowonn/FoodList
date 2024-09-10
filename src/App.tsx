@@ -33,9 +33,9 @@ const App = () => {
             <Header title="Recipes" />
             <FullMenu />
             <Routes>
-              <Route path="/" element={<Navigate replace to="/recipes" />} />
-              <Route path="/recipes" element={<SearchContainer />} />
-              <Route path="/user" element={<UserContainer />} />
+              <Route path="" element={<Navigate replace to="recipes" />} />
+              <Route path="recipes" element={<SearchContainer />} />
+              <Route path="user" element={<UserContainer />} />
             </Routes>
           </Layout>
         </MenuProvider>
