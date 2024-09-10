@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: relative;
   margin: auto;
   margin-top: 90px;
-  padding: 50px;
+  padding: 30px 100px;
   width: 100%;
   max-width: 1000px;
 `;

@@ -5,7 +5,7 @@ export const ListWrap = styled.div`
   background: ${(props) => props.theme.color.bgSurface};
   position: relative;
   margin-top: 90px;
-  padding: 50px;
+  padding: 0 100px;
 `;
 
 export const GridContainer = styled.div`

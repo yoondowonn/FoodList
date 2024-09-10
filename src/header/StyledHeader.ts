@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   height: 90px;
   min-width: 350px;
-  padding: 0 20px;
+  padding: 0 100px;
   border-bottom: 1px solid #eee;
   background-color: ${(props) => props.theme.color.bgSurface};
   z-index: 999;
