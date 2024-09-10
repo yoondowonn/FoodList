@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import IconClose from "../assets/images/icon-close.svg";
-import searchIcon from "../assets/images/icon-head-search.svg";
+import IconClose from "/src/assets/images/icon-close.svg";
+import searchIcon from "/src/assets/images/icon-head-search.svg";
 
 export const InputWrap = styled.div`
   position: sticky;
