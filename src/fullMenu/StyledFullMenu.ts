@@ -40,8 +40,8 @@ export const CloseButton = styled.button`
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.grey100};
   background-size: contain;
-  mask: url(/public/icon-fullmenu-back.svg) no-repeat;
-  -webkit-mask: url(/public/icon-fullmenu-back.svg);
+  mask: url(/icon-fullmenu-back.svg) no-repeat;
+  -webkit-mask: url(/icon-fullmenu-back.svg);
   mask-repeat: no-repeat;
   mask-position: center center;
   mask-size: cover;
