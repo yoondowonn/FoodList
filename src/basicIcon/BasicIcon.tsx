@@ -1,9 +1,9 @@
 import styled, { css, DefaultTheme } from "styled-components";
-import IconMenu from "../assets/images/icon-menu-24px.svg";
-import IconUser from "../assets/images/icon-user-24px.svg";
-import IconHome from "../assets/images/icon-home-24px.svg";
-import IconStar from "../assets/images/icon-star.svg";
-import IconLight from "../assets/images/icon-light.svg";
+import IconMenu from "/src/assets/images/icon-menu-24px.svg";
+import IconUser from "/src/assets/images/icon-user-24px.svg";
+import IconHome from "/src/assets/images/icon-home-24px.svg";
+import IconStar from "/src/assets/images/icon-star.svg";
+import IconLight from "/src/assets/images/icon-light.svg";
 
 type IconSize =
   | "extraLarge"
