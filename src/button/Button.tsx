@@ -28,7 +28,7 @@ const LabelWrap = styled.span`
   font-size: 14px;
   font-weight: 700;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     display: none;
   }
 `;

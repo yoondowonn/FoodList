@@ -30,7 +30,7 @@ const App = () => {
         <MenuProvider>
           <Layout>
             <GlobalStyle />
-            <Header title="Recipes" />
+            <Header title="Food List" />
             <FullMenu />
             <Routes>
               <Route path="" element={<Navigate replace to="recipes" />} />

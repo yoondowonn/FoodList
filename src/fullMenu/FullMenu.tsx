@@ -41,7 +41,7 @@ const FullMenu: React.FC = () => {
                     marginRight={16}
                     color={theme?.color.grey100}
                   />
-                  <span>Recipes</span>
+                  <span>Food List</span>
                 </MenuItem>
               </a>
               <a href="/user">

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ListWrap = styled.div`
   flex: 1;
@@ -7,7 +7,7 @@ export const ListWrap = styled.div`
   margin-top: 90px;
   padding: 0 100px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     padding: 0 30px;
   }
 `;
@@ -16,7 +16,7 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 100px;
 `;
 
 export const ResultsContainer = styled.div`
@@ -77,6 +77,20 @@ export const MoreButton = styled.button`
   margin-top: 20px;
 `;
 
+const Spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+    border-color: transparent;
+  }
+  50% {
+    border-color: #FFD700; 
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: transparent;
+  }
+}`;
+
 export const NoticeBox = styled.div`
   font-size: 18px;
   font-weight: bold;
@@ -87,9 +101,19 @@ export const NoticeBox = styled.div`
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0 4px 10px 0 #92949945;
+  box-shadow: 0 4px 10px 0 rgba(146, 148, 153, 0.45);
+  position: relative;
+  overflow: hidden;
 
-  @media (max-width: 600px) {
-    width: 100%;
+  &:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    animation: ${Spin} 4s linear infinite;
   }
 `;

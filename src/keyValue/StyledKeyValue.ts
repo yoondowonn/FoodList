@@ -26,7 +26,7 @@ export const StyledKeyValue = styled.div<{
     font-weight: bold;
     color: ${({ theme }) => theme.color.grey100};
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       font-size: 14px;
     }
   }
@@ -37,7 +37,7 @@ export const StyledKeyValue = styled.div<{
     width: ${({ $textAlign }) => ($textAlign === "right" ? "100%" : "50%")};
     color: ${({ theme }) => theme.color.grey100};
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       font-size: 12px;
     }
   }

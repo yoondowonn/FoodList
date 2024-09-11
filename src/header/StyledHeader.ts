@@ -15,7 +15,7 @@ export const HeaderContainer = styled.div`
   background-color: ${(props) => props.theme.color.bgSurface};
   z-index: 999;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     padding: 0 10px;
   }
 `;
@@ -26,6 +26,11 @@ export const PageTitle = styled.h1`
   font-weight: bold;
   text-align: center;
   color: ${({ theme }) => theme.color.grey80};
+  white-space: nowrap;
+
+  @media (max-width: 650px) {
+    font-size: 25px;
+  }
 `;
 
 export const MenuButton = styled.button`

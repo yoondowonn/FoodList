@@ -29,7 +29,7 @@ export const MenuContainer = styled.div<{ $isMenuOpen: boolean }>`
   transition: transform 0.3s ease-in-out;
   z-index: ${({ theme }) => theme.zIndex.menu};
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     width: 240px;
   }
 `;
