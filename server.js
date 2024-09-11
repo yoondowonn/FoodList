@@ -1,6 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const axios = require("axios");
+import express from "express";
+import cors from "cors";
+import axios from "axios";
+
 const app = express();
 
 app.use(cors());
@@ -11,8 +12,8 @@ app.get("/api/recipes", async (req, res) => {
       params: {
         type: "public",
         q: req.query.q,
-        app_id: "YOUR_APP_ID",
-        app_key: "YOUR_APP_KEY",
+        app_id: API_ID,
+        app_key: API_KEY,
         imageSize: "REGULAR",
         from: "0",
         to: "20",
