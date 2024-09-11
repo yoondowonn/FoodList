@@ -6,6 +6,10 @@ export const ListWrap = styled.div`
   position: relative;
   margin-top: 90px;
   padding: 0 100px;
+
+  @media (max-width: 600px) {
+    padding: 0 30px;
+  }
 `;
 
 export const GridContainer = styled.div`
@@ -84,4 +88,8 @@ export const NoticeBox = styled.div`
   margin: 0 auto;
   text-align: center;
   box-shadow: 0 4px 10px 0 #92949945;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;

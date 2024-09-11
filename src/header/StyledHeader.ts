@@ -14,6 +14,10 @@ export const HeaderContainer = styled.div`
   border-bottom: 1px solid #eee;
   background-color: ${(props) => props.theme.color.bgSurface};
   z-index: 999;
+
+  @media (max-width: 600px) {
+    padding: 0 10px;
+  }
 `;
 
 export const PageTitle = styled.h1`

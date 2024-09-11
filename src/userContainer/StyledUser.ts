@@ -9,6 +9,10 @@ export const Container = styled.div`
   padding: 30px 100px;
   width: 100%;
   max-width: 1000px;
+
+  @media (max-width: 600px) {
+    padding: 30px 40px;
+  }
 `;
 
 export const InfoSlide = styled.div`
@@ -18,13 +22,14 @@ export const InfoSlide = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 20px;
 `;
 
 export const ImgWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  max-width: 300px;
   height: auto;
   border-radius: 50%;
   overflow: hidden;

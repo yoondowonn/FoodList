@@ -22,13 +22,23 @@ export const StyledKeyValue = styled.div<{
 
   .key {
     width: 50%;
+    font-size: 16px;
     font-weight: bold;
     color: ${({ theme }) => theme.color.grey100};
+
+    @media (max-width: 600px) {
+      font-size: 14px;
+    }
   }
 
   .value {
+    font-size: 16px;
     text-align: ${({ $textAlign }) => $textAlign || "left"};
-    width: 50%;
+    width: ${({ $textAlign }) => ($textAlign === "right" ? "100%" : "50%")};
     color: ${({ theme }) => theme.color.grey100};
+
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
   }
 `;

@@ -16,7 +16,6 @@ export const StyledSwiperWrap = styled.div`
 
 export const StyledSwiper = styled(SwiperComponent)`
   box-sizing: border-box;
-  padding: 20px;
   overflow: hidden;
   width: 100%;
   box-shadow: 0 2px 24px 0 rgba(55, 70, 108, 0.06);

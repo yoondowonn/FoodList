@@ -28,6 +28,10 @@ export const MenuContainer = styled.div<{ $isMenuOpen: boolean }>`
     props.$isMenuOpen ? "translateX(0)" : "translateX(100%)"};
   transition: transform 0.3s ease-in-out;
   z-index: ${({ theme }) => theme.zIndex.menu};
+
+  @media (max-width: 600px) {
+    width: 240px;
+  }
 `;
 
 export const MenuWrap = styled.div<{ $isMenuOpen: boolean }>`

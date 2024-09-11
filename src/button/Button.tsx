@@ -16,14 +16,21 @@ const ButtonList = styled.div<{ $isActive: boolean }>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  color: ${(props) => props.theme.color.grey100};
-  font-size: 14px;
-  font-weight: 700;
   padding: 5px 10px;
   border-radius: 50px;
   background-color: ${({ theme, $isActive }) =>
     $isActive ? theme.color.grey20 : "none"};
   cursor: pointer;
+`;
+
+const LabelWrap = styled.span`
+  color: ${(props) => props.theme.color.grey100};
+  font-size: 14px;
+  font-weight: 700;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 type ModeOption = {
@@ -66,7 +73,7 @@ const GuideButtons: React.FC<GuideButtonsProps> = ({
             color={theme?.color.grey100}
             marginRight={10}
           />
-          <span>{label}</span>
+          <LabelWrap>{label}</LabelWrap>
         </ButtonList>
       ))}
     </ButtonWrap>
