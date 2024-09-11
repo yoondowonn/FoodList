@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -12,8 +15,8 @@ app.get("/api/recipes", async (req, res) => {
       params: {
         type: "public",
         q: req.query.q,
-        app_id: API_ID,
-        app_key: API_KEY,
+        app_id: process.env.API_ID,
+        app_key: process.env.API_KEY,
         imageSize: "REGULAR",
         from: "0",
         to: "20",
