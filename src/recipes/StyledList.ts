@@ -95,7 +95,7 @@ export const NoticeBox = styled.div`
   font-size: 18px;
   font-weight: bold;
   width: 90%;
-  padding: 30px;
+  padding: 50px;
   color: ${({ theme }) => theme.color.grey100};
   background-color: ${({ theme }) => theme.color.buttonTertiary};
   border-radius: 10px;
