@@ -1,7 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import BasicIcon from "../basicIcon/BasicIcon";
 import { ThemeContext } from "styled-components";
+import { useModeStore } from "../store/ModeStore";
+import { ServiceType } from "type/ServiceType";
 
 const ButtonWrap = styled.div`
   display: flex;
@@ -34,7 +36,7 @@ const LabelWrap = styled.span`
 `;
 
 type ModeOption = {
-  value: string;
+  value: ServiceType;
   label: string;
 };
 
@@ -49,13 +51,32 @@ const GuideButtons: React.FC<GuideButtonsProps> = ({
   options,
   onSelectMode,
 }) => {
-  const [activeLabel, setActiveLabel] = useState<string | null>("Light");
   const theme = useContext(ThemeContext);
+  const { type, setModeType } = useModeStore();
+
+  // 초기 상태 설정
+  const initialLabel =
+    options.find((option) => option.value === type)?.label || null;
+  const [activeLabel, setActiveLabel] = useState<string | null>(initialLabel);
+
+  // 저장소의 상태와 동기화
+  useEffect(() => {
+    const newActiveLabel =
+      options.find((option) => option.value === type)?.label || null;
+    setActiveLabel(newActiveLabel);
+  }, [type, options]);
 
   const handleClick = (label: string) => {
     const newActiveLabel = label === activeLabel ? null : label;
     setActiveLabel(newActiveLabel);
+
     const selectedOption = options.find((option) => option.label === label);
+
+    // 저장소의 상태 업데이트
+    if (selectedOption) {
+      setModeType(selectedOption.value);
+    }
+
     onSelectMode(selectedOption ? selectedOption.value : "");
   };
 

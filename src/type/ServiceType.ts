@@ -1,5 +1,5 @@
-export const enum ServiceType {
-  Light = "Light",
-  Dark = "Dark",
-  None = "",
+export enum ServiceType {
+  None = "none",
+  Light = "light",
+  Dark = "dark",
 }

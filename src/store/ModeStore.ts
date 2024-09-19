@@ -7,7 +7,7 @@ export interface ModeStore {
   setModeType: (mode: ServiceType) => void;
 }
 
-export const useModeStore = create(
+export const useModeStore = create<ModeStore>()(
   persist(
     (set) => ({
       type: ServiceType.None,
