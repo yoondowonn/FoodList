@@ -10,7 +10,7 @@ export interface ModeStore {
 export const useModeStore = create<ModeStore>()(
   persist(
     (set) => ({
-      type: ServiceType.None,
+      type: ServiceType.Light,
       setModeType: (mode: ServiceType) => set({ type: mode }),
     }),
     {

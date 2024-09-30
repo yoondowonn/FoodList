@@ -41,28 +41,31 @@ type ModeOption = {
 };
 
 type GuideButtonsProps = {
-  labels: string[];
   options: ModeOption[];
-  onSelectMode: (value: string) => void;
+  onSelectMode: (value: ServiceType) => void;
 };
 
 const GuideButtons: React.FC<GuideButtonsProps> = ({
-  labels,
   options,
   onSelectMode,
 }) => {
   const theme = useContext(ThemeContext);
   const { type, setModeType } = useModeStore();
 
-  // 초기 상태 설정
-  const initialLabel =
-    options.find((option) => option.value === type)?.label || null;
+  const labels = options.map((option) => option.label);
+
+  // 기본적으로 'Light' 선택
+  const initialLabel: string | null =
+    type !== ServiceType.None
+      ? options.find((option) => option.value === type)?.label || null
+      : "Light";
   const [activeLabel, setActiveLabel] = useState<string | null>(initialLabel);
 
-  // 저장소의 상태와 동기화
   useEffect(() => {
-    const newActiveLabel =
-      options.find((option) => option.value === type)?.label || null;
+    const newActiveLabel: string | null =
+      type !== ServiceType.None
+        ? options.find((option) => option.value === type)?.label || null
+        : "Light";
     setActiveLabel(newActiveLabel);
   }, [type, options]);
 
@@ -72,12 +75,13 @@ const GuideButtons: React.FC<GuideButtonsProps> = ({
 
     const selectedOption = options.find((option) => option.label === label);
 
-    // 저장소의 상태 업데이트
     if (selectedOption) {
       setModeType(selectedOption.value);
+      onSelectMode(selectedOption.value);
+    } else {
+      setModeType(ServiceType.None);
+      onSelectMode(ServiceType.None);
     }
-
-    onSelectMode(selectedOption ? selectedOption.value : "");
   };
 
   return (
