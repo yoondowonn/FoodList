@@ -32,11 +32,7 @@ const Header: React.FC<Recipes> = ({ title }) => {
     <HeaderContainer>
       <HeaderItem>
         <ModeWrap>
-          <Button
-            labels={["Light", "Dark"]}
-            options={modeOptions}
-            onSelectMode={setModeType}
-          />
+          <Button options={modeOptions} onSelectMode={setModeType} />
         </ModeWrap>
       </HeaderItem>
 
